@@ -1,0 +1,190 @@
+C++ stuff to note:
+
+McAfee deleted/denying access of a.exe file from cpp code: exclude folder from scan under Threat Prevention>Show Advanced>On-Access Scan>Add folder directory
+
+Compiling cpp files:
+-c 	compiles into .o file (default file name a.o/a.exe)
+-o 	names file into desired name
+
+Examples:
+g++ file.cpp 			gives a.exe
+g++ file.cpp -o file.exe	gives file.exe
+g++ -c file.cpp -o filename.o 	gives filename.o
+g++ filename.o -o newname.exe	gives newname.exe
+
+
+Taking in variables from command-line:
+...
+int main(int argc, char *argv[]){
+    ...
+    argc        number of arguments entered
+    argv        array of arguments entered
+    argv[0]     program name
+    argv[1]     first argument
+    ...
+}
+...
+
+Calling file in cmdline:
+Compile function first! Then in cmd type	.\filename.exe argument1 argument2 argument3
+Eg.	cmdline		.\isleapyearc.exe 2000 [or just] isleapyearc.exe 2000
+	output		2000 is a leap year
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+Headers:
+#include <iostream>	To use input/output (interaction with user/printing)
+#include <cmath> 	To use math functions (M_PI: gives 3.1415..)
+#include <iomanip>	To set flags, precision, date/time, money of input/output values
+#include <string>	TO use string as variables
+#include <vector>	To use vectors
+
+Printing output		cout<<"Enter your name:"<<endl;		endl is like next line/"enter"
+Obtaining input		cin>>name;
+Setting precision	cout<<fixed<<setprecision(n)<<hello;	prints hello variable to n d.p.
+			cout<<setprecision(n)<<hello;		prints hello variable to n s.f.
+
+---------------------------------------------------------------------------------------------------------------------------------
+Setting variables:
+integer		int x, y, z; 		(1,2,3)
+double		double x, y, z;		(1.0, 2.0, 3.0)
+float		float x, y, z;		(1.0f, 2.0f, 3.0f)
+character	char x, y, z;		('a', 'b', '1', '2')
+string		string x, y, z;		("a", "abc", "1a2b3c")
+constant	const int MY_AGE = 15;	Usually use CAPS for const variables, space separated by _
+boolean		bool x, y, z;		(true, false)
+pointer		int *x, *y, z;		Creates pointer of type int for x and y but not z
+vector		vector<int> x;		Creates vector x with type integer
+
+
+Casting: convert representation of data from one type to another type
+...
+int x, y;
+double z;
+
+z = 6;			wrong: because 6 is an int
+z = (double) 6;		cast 6 into double to store in y
+z = (double)x/(double)y	properly divide int x by int y (eg. 5/2 = 2.5)
+...
+
+---------------------------------------------------------------------------------------------------------------------------------
+Arithmetic Operators:
+/	Div, returns quotient of division(integer)/returns division of two numbers(double/float, 5/2 = 2.5)
+%	Mod, returns remainder of division (integer)
+==	Equals to
+!=	Not equals to
+>	Greater than
+<	Less than
+>=	Greater than or equals to
+<=	Less than or equals to
+
+Characters:
+\n	New line
+\t	Tab
+\\	To use character \
+
+Boolean:
+!	NOT operator (NOT true = false)
+&&	AND operator (true AND false = false)
+||	OR operator (true OR false = true)
+
+Strings:
+Initialising	=			Setting value of string
+Concatenating	+			Joining two strings together
+Reading		getline(cin, str)	Reading user input of more than 1 word into string variable str (if 1 word only can use cin)
+Indexing	str[i]			Obtaining character at index i of string str
+Slicing		str.substr(ind, len)	Slicing string str of length len from index ind
+Length		str.length()		Obtaining length of string in variable str
+Comparing	==, !=, >, <		>, <, >=, <= Compares string in alphabetical order
+Searching	str.find("abc", ind)	Search for "abc" from index ind onwards in str, returns index of first character(index of a)
+					Not necessary to include ind, can be just str.find("abc"), will return only first occurrence
+					If "abc" not part of str, returns string::npos (str.find("abc") == string::npos)
+
+---------------------------------------------------------------------------------------------------------------------------------Passing arguments:
+Call-by-value		void func(int x){}	Value of main var is stored in local var (main var unaffected)
+Call-by-reference	void func(int &x){}	Reference to main var is stored (main var affected)
+
+
+Pointers:
+Creating		int *x, *y, z = 10;	Pointer of type int created for x and y but not z (need * to create pointer)
+Referencing		x = &z;			Storing address (&) of z into pointer x
+			cout<<x;		Prints out address of z
+Dereferencing		cout<<*x;		Prints out value of z (10)
+Replacing value		*x = 50;		Replaces value of z (50) with 10
+Validity		x = NULL; [or] nullptr	Ensures pointer points to a valid place, if not program will crash
+
+
+Heap dynamic variable (HDV):	
+For every "new" there must be a "delete" (only once, doing twice will crash computer)
+Not destroying will cause memory leak
+
+Creating new pointer	int *x = new int;	Calling "new" creates heap dynamic var of type int and stores address into pointer x
+Deleting pointer	delete x;		Returns the memory used by pointer to computer, does not delete the pointer var
+			x = nullptr; [or] NULL	Ensure pointer points to valid place, allow for accidental double delete
+Creating HDV array	int *hi = new int[n];	Creating HDV array of size n, storing address into pointer hi
+Deleting HDV array	delete [] hi;		Deleting HDV array stored in pointer hi
+
+Resizing arrays using vectors:	Use vectors when udk how much data is going to be stored
+...
+vector <int> hi;		Creates vector hi with type int
+for (int i = 0; i<10; i++)	For 0<i<10, add i*100 into vector hi using pushback method
+    hi.push_back(i*100);	
+
+for(int i:hi)			For every element i in vector hi,
+    cout<<i<<endl;		print i
+...
+
+hi.size();			Gives size of vector hi
+
+
+---------------------------------------------------------------------------------------------------------------------------------
+Control Flow:
+Branching:
+If-else:    condition must be boolean expressions
+...
+if (condition){
+    //do something
+}
+else if (condition){
+    //do something else
+}
+else{
+    //do another thing
+}
+...
+
+
+Switch: condition must be numeric-expressions(int, char, bool)
+        constants must be a constant, cannot be a variable!
+...
+swtich (numeric expression){
+    case constant1:
+        //do something
+        break;
+    case constant2:
+        //do something else
+        break;
+    default:
+        //do another thing
+        break;
+}
+...
+
+
+Iterative statements:	Can be used to iterate over user input
+While loop:	while condition is true, do something
+...
+while (condition){
+    //do something
+}
+...
+
+
+For loop:	for initialisation, while condition is true, do something, increment
+...
+for (initialisation, condition, increment){
+    //do something
+}
+...
+
+---------------------------------------------------------------------------------------------------------------------------------
