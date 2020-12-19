@@ -11,5 +11,4 @@ Modules list:
   <li>Advanced Data Structures (in progress)</li>
 </ol>
 
-Note: \
-1.CPP.txt:  Contains notes on CPP compilation, syntax, etc.
+Note:   1.CPP.txt:  Contains notes on CPP compilation, syntax, etc.
