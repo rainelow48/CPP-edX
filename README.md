@@ -1,6 +1,7 @@
-# CPP-edX
+# edX: New York University (NYU) Programming & Data Structures MicroBachelors Course
 
-<h2>A consolidation of codes for various labs in C++ modules by New York University on edX.</h2>
+
+<h2>A consolidation of codes for various labs in C++ modules by NYU on edX.</h2>
 
 Modules list:
 <ol>
@@ -10,4 +11,5 @@ Modules list:
   <li>Advanced Data Structures (in progress)</li>
 </ol>
 
+Note: \
 1.CPP.txt:  Contains notes on CPP compilation, syntax, etc.
