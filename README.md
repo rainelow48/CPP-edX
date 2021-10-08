@@ -8,7 +8,6 @@ Modules list:
   <li>Introduction to Programming in C++ (completed)</li>
   <li>Advanced Programming in C++ (completed)</li>
   <li>Introduction to Data Structures (completed)</li>
-  <li>Advanced Data Structures (in progress)</li>
 </ol>
 
 Note:   1.CPP.txt:  Contains notes on CPP compilation, syntax, etc.
